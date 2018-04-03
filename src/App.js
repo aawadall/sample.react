@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 class Button extends React.Component {
   
   // handleClick = () => {
@@ -33,7 +34,7 @@ class App extends Component {
       counter: prevState.counter + incrementValue
     }));
   };
-  
+
   render() {
     return (
       <div className="App">
@@ -41,6 +42,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+            
+      </div>
+    ); 
+  }
+}
+
+
+/*
+
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
@@ -50,11 +60,8 @@ class App extends Component {
         <Button incrementValue={100} onClickFunction={this.incrementCounter}/>
 
         <Result counter={this.state.counter}/>
-      </div>
-    ); 
-  }
-}
-
+    
+*/
 
 
 export default App;
