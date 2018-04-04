@@ -3,31 +3,56 @@ import logo from './logo.svg';
 import './App.css';
 
 
-class Button extends React.Component {
-  
-  // handleClick = () => {
-  //     this.setState((prevState) => ({
-  //             counter: this.state.counter + 1
-  //         }));
-  // };
+const Card = (props) => {
+  return (
+      <div className="Card" style={{margin: '1em'}}>
+          <img width="75" src={props.avatar_url} />
+          <div style={{ display: 'inline-block', marginLeft: 10}}>
+              <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>
+                  {props.name}
+              </div>
+              <div>{props.company}</div>
+          </div>
+      </div>
+  );
+};
+
+
+
+const CardList = (props) => {
+  return (
+      <div className="CardList">
+          {props.cards.map(card => <Card {...card}/>)}
+      </div>
+  );
+};
+
+class Form extends React.Component {
+  handleSubmit = (event) => {
+    //..
+    event.preventDefaut();
+    console.log("Capture Event!!!" + this.userNameInput.value);
+  };
+
   render() {
       return (
-          <button 
-          onClick={()=>this.props.onClickFunction(this.props.incrementValue)}>
-              +{this.props.incrementValue} 
-          </button>
+          <form onSubmit={this.handleSubmit}>
+              <input type="text" 
+              ref={(input) => this.userNameInput = input}
+              placeholder="GitHub username" required/>    
+              <button>Add card</button>
+          </form>
       );
-  };
+  }
 }
 
-const Result = (props) => {
-  return (
-      <div>{props.counter}</div>
-  );
-}
 
 class App extends Component {
-  state = { counter : 0};
+  state = { cards : [
+    {name: 'Ahmed R. Awadallah', avatar_url:'https://avatars3.githubusercontent.com/u/18039552?s=460&v=4'},
+    {name: 'Samer Buna', avatar_url:'https://avatars3.githubusercontent.com/u/75209?s=460&v=4', company: 'jsComplete.com'},
+    {name: 'Jeremy Walker', avatar_url: 'https://avatars2.githubusercontent.com/u/448908?s=460&v=4'}
+  ]};
 
   incrementCounter = (incrementValue) => {
     this.setState((prevState) => ({
@@ -40,28 +65,17 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">GitHub Cards</h1>
         </header>
-            
+        <div className="App-body">
+          <Form />
+          <CardList cards={this.state.cards}/>
+        </div>    
       </div>
     ); 
   }
 }
 
-
-/*
-
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button incrementValue={1} onClickFunction={this.incrementCounter}/>
-        <Button incrementValue={5} onClickFunction={this.incrementCounter}/>
-        <Button incrementValue={10} onClickFunction={this.incrementCounter}/>
-        <Button incrementValue={100} onClickFunction={this.incrementCounter}/>
-
-        <Result counter={this.state.counter}/>
-    
-*/
 
 
 export default App;

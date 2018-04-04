@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: url('img/01.jpg');
 }
 
 .App-logo {
@@ -15,13 +16,36 @@
 }
 
 .App-title {
-  font-size: 1.5em;
-}
+  font-size: 2.5em;
+  }
 
 .App-intro {
   font-size: large;
 }
 
+.App-body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.search-form {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 1em;
+  background-image: radial-gradient(top left, #FDE, #987);
+  box-shadow: .5em .5em 1em #222;
+}
+
+.Card {
+  background-image: radial-gradient(top left, #FFF, #DCB);
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  display: inline-block;
+  box-shadow: .5em .5em 1em #222;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
