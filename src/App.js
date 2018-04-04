@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,17 +29,25 @@ const CardList = (props) => {
 };
 
 class Form extends React.Component {
-  handleSubmit = (event) => {
-    //..
-    event.preventDefaut();
+  state = { userName : ''  };
+  handleSubmit(event) {
+      
     console.log("Capture Event!!!" + this.userNameInput.value);
-  };
+    axios.get(`https://api.gethub.com/users/${this.state.userName}`)
+      .then(resp => {
+        console.log(resp);
+      });
+
+      event.preventDefaut();
+
+   };
 
   render() {
       return (
           <form onSubmit={this.handleSubmit}>
               <input type="text" 
-              ref={(input) => this.userNameInput = input}
+              value = {this.state.userName}
+              onChange = {(event)=> this.setState({ userName: event.target.value})}  
               placeholder="GitHub username" required/>    
               <button>Add card</button>
           </form>
@@ -58,7 +67,7 @@ class App extends Component {
     this.setState((prevState) => ({
       counter: prevState.counter + incrementValue
     }));
-  };
+  }
 
   render() {
     return (
