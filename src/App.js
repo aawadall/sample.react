@@ -4,6 +4,15 @@ import logo from './logo.svg';
 import './App.css';
 
 
+const Header = (props) => {
+    return (
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">GitHub Cards</h1>
+        </header>
+      );
+};
+
 const Card = (props) => {
   return (
       <div className="Card" style={{margin: '1em'}}>
@@ -31,20 +40,20 @@ const CardList = (props) => {
 class Form extends React.Component {
   state = { userName : ''  };
   handleSubmit(event) {
-      
+    
+    event.preventDefault();
     console.log("Capture Event!!!" + this.userNameInput.value);
     axios.get(`https://api.gethub.com/users/${this.state.userName}`)
       .then(resp => {
         console.log(resp);
+        
       });
-
-      event.preventDefaut();
-
    };
-
+// className="search-form">
   render() {
       return (
-          <form onSubmit={this.handleSubmit}>
+        
+          <form onSubmit={this.handleSubmit}> 
               <input type="text" 
               value = {this.state.userName}
               onChange = {(event)=> this.setState({ userName: event.target.value})}  
@@ -55,6 +64,16 @@ class Form extends React.Component {
   }
 }
 
+
+
+
+class Body extends React.Component {
+  render() {
+    return(
+        <div>body</div>
+      );
+  }
+}
 
 class App extends Component {
   state = { cards : [
@@ -72,10 +91,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">GitHub Cards</h1>
-        </header>
+        <Header />
         <div className="App-body">
           <Form />
           <CardList cards={this.state.cards}/>
