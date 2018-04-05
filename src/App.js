@@ -39,25 +39,24 @@ const CardList = (props) => {
 
 class Form extends React.Component {
   state = { userName : ''  };
-  handleSubmit(event) {
-    
+  handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Capture Event!!!" + this.userNameInput.value);
-    axios.get(`https://api.gethub.com/users/${this.state.userName}`)
+//    console.log("Capture Event!!!" + this.userNameInput.value);
+    axios.get(`https://api.github.com/users/${this.state.userName}`)
       .then(resp => {
-        console.log(resp);
-        
-      });
-   };
+        this.props.onSubmit(resp.data);
+        });
+      };
+   
 // className="search-form">
   render() {
       return (
         
           <form onSubmit={this.handleSubmit}> 
               <input type="text" 
-              value = {this.state.userName}
-              onChange = {(event)=> this.setState({ userName: event.target.value})}  
-              placeholder="GitHub username" required/>    
+                value = {this.state.userName}
+                onChange = {(event)=> this.setState({ userName: event.target.value })}  
+                placeholder="GitHub username" required/>    
               <button>Add card</button>
           </form>
       );
@@ -88,12 +87,17 @@ class App extends Component {
     }));
   }
 
+  addNewCard = (cardInfo) => {
+    this.setState(prevState => ({
+      cards: prevState.cards.concat(cardInfo)
+    }));
+  };
   render() {
     return (
       <div className="App">
         <Header />
         <div className="App-body">
-          <Form />
+          <Form onSubmit={this.addNewCard}/>
           <CardList cards={this.state.cards}/>
         </div>    
       </div>
