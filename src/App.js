@@ -45,6 +45,7 @@ class Form extends React.Component {
     axios.get(`https://api.github.com/users/${this.state.userName}`)
       .then(resp => {
         this.props.onSubmit(resp.data);
+        this.setState({userName: ''});
         });
       };
    
@@ -75,11 +76,7 @@ class Body extends React.Component {
 }
 
 class App extends Component {
-  state = { cards : [
-    {name: 'Ahmed R. Awadallah', avatar_url:'https://avatars3.githubusercontent.com/u/18039552?s=460&v=4'},
-    {name: 'Samer Buna', avatar_url:'https://avatars3.githubusercontent.com/u/75209?s=460&v=4', company: 'jsComplete.com'},
-    {name: 'Jeremy Walker', avatar_url: 'https://avatars2.githubusercontent.com/u/448908?s=460&v=4'}
-  ]};
+  state = { cards : [  ]};
 
   incrementCounter = (incrementValue) => {
     this.setState((prevState) => ({
