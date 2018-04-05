@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/aawadall/sample.react.svg?branch=master)](https://travis-ci.org/aawadall/sample.react)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/71457cf5621410ca9563/maintainability)](https://codeclimate.com/github/aawadall/sample.react/maintainability)
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
