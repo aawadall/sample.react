@@ -53,7 +53,7 @@ class Form extends React.Component {
   render() {
       return (
         
-          <form onSubmit={this.handleSubmit}> 
+          <form onSubmit={this.handleSubmit} className="search-form"> 
               <input type="text" 
                 value = {this.state.userName}
                 onChange = {(event)=> this.setState({ userName: event.target.value })}  

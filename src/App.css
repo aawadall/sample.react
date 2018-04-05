@@ -10,7 +10,9 @@
 
 .App-header {
   background-color: #222;
-  height: 125px;
+  background-image: url('img/02.jpg');
+  box-shadow: 0.25em 0.25em 0.5em #222;
+  height: auto;
   padding: 20px;
   color: white;
 }
@@ -31,10 +33,10 @@
 
 .search-form {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin: 2em;
-  padding: 2em;
-  border-radius: 1em;
-  background-image: radial-gradient(top left, #FDE, #987);
+  margin: 1em;
+  padding: 1em;
+  border-radius: .5em;
+  background-image: url('img/02.jpg');
   box-shadow: .5em .5em 1em #222;
 }
 
